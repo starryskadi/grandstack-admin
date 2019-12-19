@@ -1,0 +1,2382 @@
+# source: http://localhost:4000/api
+# timestamp: Thu Dec 19 2019 20:14:04 GMT+0630 (Myanmar Time)
+
+directive @cypher(statement: String) on FIELD_DEFINITION
+
+directive @relation(name: String, direction: _RelationDirections, from: String, to: String) on FIELD_DEFINITION | OBJECT
+
+directive @additionalLabels(labels: [String]) on OBJECT
+
+directive @MutationMeta(relationship: String, from: String, to: String) on FIELD_DEFINITION
+
+directive @neo4j_ignore on FIELD_DEFINITION
+
+directive @isAuthenticated on OBJECT | FIELD_DEFINITION
+
+directive @hasScope(scopes: [String]) on OBJECT | FIELD_DEFINITION
+
+type _AddAddressRelatedUserPayload {
+  from: User
+  to: Address
+}
+
+type _AddAdminAdminGroupPayload {
+  from: AdminGroup
+  to: Admin
+}
+
+type _AddAdminGroupAdminsPayload {
+  from: AdminGroup
+  to: Admin
+}
+
+type _AddAttributeImagePayload {
+  from: Attribute
+  to: Image
+}
+
+type _AddAttributeProductPayload {
+  from: Product
+  to: Attribute
+}
+
+type _AddAttributeValueProductPayload {
+  from: Product
+  to: AttributeValue
+}
+
+type _AddAttributeValuesPayload {
+  from: Attribute
+  to: AttributeValue
+}
+
+type _AddAttributeValueTypePayload {
+  from: Attribute
+  to: AttributeValue
+}
+
+type _AddBranchProductPayload {
+  from: Product
+  to: Branch
+}
+
+type _AddBranchStockinbranchPayload {
+  from: StockInBranch
+  to: Branch
+}
+
+type _AddCategoriesChildrenPayload {
+  from: Categories
+  to: Categories
+}
+
+type _AddCategoriesParentPayload {
+  from: Categories
+  to: Categories
+}
+
+type _AddCategoriesPrimaryCategoryOfProductPayload {
+  from: Product
+  to: Categories
+}
+
+type _AddCategoriesProductPayload {
+  from: Product
+  to: Categories
+}
+
+type _AddCouponProductPayload {
+  from: Coupon
+  to: Product
+}
+
+type _AddFlashSaleProductPayload {
+  from: FlashSale
+  to: Product
+}
+
+type _AddMembershipRelatedUserPayload {
+  from: User
+  to: Membership
+}
+
+type _AddPageTranslatedContentPayload {
+  from: Page
+  to: JSONTranslation
+}
+
+type _AddPageTranslatedSeoDescriptionPayload {
+  from: Page
+  to: StringTranslation
+}
+
+type _AddPageTranslatedSeoTitlePayload {
+  from: Page
+  to: StringTranslation
+}
+
+type _AddProductAttributePayload {
+  from: Product
+  to: AttributeValue
+}
+
+type _AddProductBranchPayload {
+  from: Product
+  to: Branch
+}
+
+type _AddProductCategoriesPayload {
+  from: Product
+  to: Categories
+}
+
+type _AddProductImagesPayload {
+  from: Image
+  to: Product
+}
+
+type _AddProductPrimaryCategoryPayload {
+  from: Product
+  to: Categories
+}
+
+type _AddProductStockPayload {
+  from: Product
+  to: StockInBranch
+}
+
+type _AddProductVariationsPayload {
+  from: Product
+  to: Product
+}
+
+input _AddressFilter {
+  AND: [_AddressFilter!]
+  OR: [_AddressFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  state: String
+  state_not: String
+  state_in: [String!]
+  state_not_in: [String!]
+  state_contains: String
+  state_not_contains: String
+  state_starts_with: String
+  state_not_starts_with: String
+  state_ends_with: String
+  state_not_ends_with: String
+  subDistrict: String
+  subDistrict_not: String
+  subDistrict_in: [String!]
+  subDistrict_not_in: [String!]
+  subDistrict_contains: String
+  subDistrict_not_contains: String
+  subDistrict_starts_with: String
+  subDistrict_not_starts_with: String
+  subDistrict_ends_with: String
+  subDistrict_not_ends_with: String
+  district: String
+  district_not: String
+  district_in: [String!]
+  district_not_in: [String!]
+  district_contains: String
+  district_not_contains: String
+  district_starts_with: String
+  district_not_starts_with: String
+  district_ends_with: String
+  district_not_ends_with: String
+  city: String
+  city_not: String
+  city_in: [String!]
+  city_not_in: [String!]
+  city_contains: String
+  city_not_contains: String
+  city_starts_with: String
+  city_not_starts_with: String
+  city_ends_with: String
+  city_not_ends_with: String
+  street: String
+  street_not: String
+  street_in: [String!]
+  street_not_in: [String!]
+  street_contains: String
+  street_not_contains: String
+  street_starts_with: String
+  street_not_starts_with: String
+  street_ends_with: String
+  street_not_ends_with: String
+  isBillingAddress: Boolean
+  isBillingAddress_not: Boolean
+  isShippingAddress: Boolean
+  isShippingAddress_not: Boolean
+  relatedUser: _UserFilter
+  relatedUser_not: _UserFilter
+  relatedUser_in: [_UserFilter!]
+  relatedUser_not_in: [_UserFilter!]
+}
+
+input _AddressInput {
+  id: ID!
+}
+
+enum _AddressOrdering {
+  id_asc
+  id_desc
+  state_asc
+  state_desc
+  subDistrict_asc
+  subDistrict_desc
+  district_asc
+  district_desc
+  city_asc
+  city_desc
+  street_asc
+  street_desc
+  isBillingAddress_asc
+  isBillingAddress_desc
+  isShippingAddress_asc
+  isShippingAddress_desc
+  _id_asc
+  _id_desc
+}
+
+type _AddStockInBranchBranchPayload {
+  from: StockInBranch
+  to: Branch
+}
+
+type _AddStockInBranchProductPayload {
+  from: Product
+  to: StockInBranch
+}
+
+type _AddUserAddressesPayload {
+  from: User
+  to: Address
+}
+
+type _AddUserBranchPayload {
+  from: User
+  to: Branch
+}
+
+type _AddUserMembershipPayload {
+  from: User
+  to: Membership
+}
+
+type _AddUserWishlistPayload {
+  from: User
+  to: Product
+}
+
+input _AdminFilter {
+  AND: [_AdminFilter!]
+  OR: [_AdminFilter!]
+  username: String
+  username_not: String
+  username_in: [String!]
+  username_not_in: [String!]
+  username_contains: String
+  username_not_contains: String
+  username_starts_with: String
+  username_not_starts_with: String
+  username_ends_with: String
+  username_not_ends_with: String
+  adminGroup: _AdminGroupFilter
+  adminGroup_not: _AdminGroupFilter
+  adminGroup_in: [_AdminGroupFilter!]
+  adminGroup_not_in: [_AdminGroupFilter!]
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  firstName: String
+  firstName_not: String
+  firstName_in: [String!]
+  firstName_not_in: [String!]
+  firstName_contains: String
+  firstName_not_contains: String
+  firstName_starts_with: String
+  firstName_not_starts_with: String
+  firstName_ends_with: String
+  firstName_not_ends_with: String
+  lastName: String
+  lastName_not: String
+  lastName_in: [String!]
+  lastName_not_in: [String!]
+  lastName_contains: String
+  lastName_not_contains: String
+  lastName_starts_with: String
+  lastName_not_starts_with: String
+  lastName_ends_with: String
+  lastName_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+}
+
+input _AdminGroupFilter {
+  AND: [_AdminGroupFilter!]
+  OR: [_AdminGroupFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  admins: _AdminFilter
+  admins_not: _AdminFilter
+  admins_in: [_AdminFilter!]
+  admins_not_in: [_AdminFilter!]
+  admins_some: _AdminFilter
+  admins_none: _AdminFilter
+  admins_single: _AdminFilter
+  admins_every: _AdminFilter
+}
+
+input _AdminGroupInput {
+  id: ID!
+}
+
+enum _AdminGroupOrdering {
+  id_asc
+  id_desc
+  name_asc
+  name_desc
+  _id_asc
+  _id_desc
+}
+
+input _AdminInput {
+  username: String!
+}
+
+enum _AdminOrdering {
+  _id_asc
+  _id_desc
+  username_asc
+  username_desc
+  email_asc
+  email_desc
+  firstName_asc
+  firstName_desc
+  lastName_asc
+  lastName_desc
+  address_asc
+  address_desc
+}
+
+input _AttributeFilter {
+  AND: [_AttributeFilter!]
+  OR: [_AttributeFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  image: _ImageFilter
+  image_not: _ImageFilter
+  image_in: [_ImageFilter!]
+  image_not_in: [_ImageFilter!]
+  values: _AttributeValueFilter
+  values_not: _AttributeValueFilter
+  values_in: [_AttributeValueFilter!]
+  values_not_in: [_AttributeValueFilter!]
+  values_some: _AttributeValueFilter
+  values_none: _AttributeValueFilter
+  values_single: _AttributeValueFilter
+  values_every: _AttributeValueFilter
+  product: _ProductFilter
+  product_not: _ProductFilter
+  product_in: [_ProductFilter!]
+  product_not_in: [_ProductFilter!]
+}
+
+input _AttributeInput {
+  id: ID!
+}
+
+enum _AttributeOrdering {
+  id_asc
+  id_desc
+  name_asc
+  name_desc
+  _id_asc
+  _id_desc
+}
+
+input _AttributeValueFilter {
+  AND: [_AttributeValueFilter!]
+  OR: [_AttributeValueFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  value: String
+  value_not: String
+  value_in: [String!]
+  value_not_in: [String!]
+  value_contains: String
+  value_not_contains: String
+  value_starts_with: String
+  value_not_starts_with: String
+  value_ends_with: String
+  value_not_ends_with: String
+  type: _AttributeFilter
+  type_not: _AttributeFilter
+  type_in: [_AttributeFilter!]
+  type_not_in: [_AttributeFilter!]
+  product: _ProductFilter
+  product_not: _ProductFilter
+  product_in: [_ProductFilter!]
+  product_not_in: [_ProductFilter!]
+  product_some: _ProductFilter
+  product_none: _ProductFilter
+  product_single: _ProductFilter
+  product_every: _ProductFilter
+}
+
+input _AttributeValueInput {
+  id: ID!
+}
+
+enum _AttributeValueOrdering {
+  id_asc
+  id_desc
+  value_asc
+  value_desc
+  _id_asc
+  _id_desc
+}
+
+input _BranchFilter {
+  AND: [_BranchFilter!]
+  OR: [_BranchFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  showInWebsite: Boolean
+  showInWebsite_not: Boolean
+  stockinbranch: _StockInBranchFilter
+  stockinbranch_not: _StockInBranchFilter
+  stockinbranch_in: [_StockInBranchFilter!]
+  stockinbranch_not_in: [_StockInBranchFilter!]
+  stockinbranch_some: _StockInBranchFilter
+  stockinbranch_none: _StockInBranchFilter
+  stockinbranch_single: _StockInBranchFilter
+  stockinbranch_every: _StockInBranchFilter
+  product: _ProductFilter
+  product_not: _ProductFilter
+  product_in: [_ProductFilter!]
+  product_not_in: [_ProductFilter!]
+  product_some: _ProductFilter
+  product_none: _ProductFilter
+  product_single: _ProductFilter
+  product_every: _ProductFilter
+}
+
+input _BranchInput {
+  id: ID!
+}
+
+enum _BranchOrdering {
+  id_asc
+  id_desc
+  name_asc
+  name_desc
+  description_asc
+  description_desc
+  address_asc
+  address_desc
+  showInWebsite_asc
+  showInWebsite_desc
+  _id_asc
+  _id_desc
+}
+
+input _CategoriesFilter {
+  AND: [_CategoriesFilter!]
+  OR: [_CategoriesFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  product: _ProductFilter
+  product_not: _ProductFilter
+  product_in: [_ProductFilter!]
+  product_not_in: [_ProductFilter!]
+  product_some: _ProductFilter
+  product_none: _ProductFilter
+  product_single: _ProductFilter
+  product_every: _ProductFilter
+  primaryCategoryOfProduct: _ProductFilter
+  primaryCategoryOfProduct_not: _ProductFilter
+  primaryCategoryOfProduct_in: [_ProductFilter!]
+  primaryCategoryOfProduct_not_in: [_ProductFilter!]
+  primaryCategoryOfProduct_some: _ProductFilter
+  primaryCategoryOfProduct_none: _ProductFilter
+  primaryCategoryOfProduct_single: _ProductFilter
+  primaryCategoryOfProduct_every: _ProductFilter
+  parent: _CategoriesFilter
+  parent_not: _CategoriesFilter
+  parent_in: [_CategoriesFilter!]
+  parent_not_in: [_CategoriesFilter!]
+  children: _CategoriesFilter
+  children_not: _CategoriesFilter
+  children_in: [_CategoriesFilter!]
+  children_not_in: [_CategoriesFilter!]
+  children_some: _CategoriesFilter
+  children_none: _CategoriesFilter
+  children_single: _CategoriesFilter
+  children_every: _CategoriesFilter
+}
+
+input _CategoriesInput {
+  id: ID!
+}
+
+enum _CategoriesOrdering {
+  id_asc
+  id_desc
+  name_asc
+  name_desc
+  _id_asc
+  _id_desc
+}
+
+input _CouponFilter {
+  AND: [_CouponFilter!]
+  OR: [_CouponFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  code: String
+  code_not: String
+  code_in: [String!]
+  code_not_in: [String!]
+  code_contains: String
+  code_not_contains: String
+  code_starts_with: String
+  code_not_starts_with: String
+  code_ends_with: String
+  code_not_ends_with: String
+  amount: String
+  amount_not: String
+  amount_in: [String!]
+  amount_not_in: [String!]
+  amount_contains: String
+  amount_not_contains: String
+  amount_starts_with: String
+  amount_not_starts_with: String
+  amount_ends_with: String
+  amount_not_ends_with: String
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  startTime: String
+  startTime_not: String
+  startTime_in: [String!]
+  startTime_not_in: [String!]
+  startTime_contains: String
+  startTime_not_contains: String
+  startTime_starts_with: String
+  startTime_not_starts_with: String
+  startTime_ends_with: String
+  startTime_not_ends_with: String
+  endTime: String
+  endTime_not: String
+  endTime_in: [String!]
+  endTime_not_in: [String!]
+  endTime_contains: String
+  endTime_not_contains: String
+  endTime_starts_with: String
+  endTime_not_starts_with: String
+  endTime_ends_with: String
+  endTime_not_ends_with: String
+  product: _ProductFilter
+  product_not: _ProductFilter
+  product_in: [_ProductFilter!]
+  product_not_in: [_ProductFilter!]
+  product_some: _ProductFilter
+  product_none: _ProductFilter
+  product_single: _ProductFilter
+  product_every: _ProductFilter
+}
+
+input _CouponInput {
+  id: ID!
+}
+
+enum _CouponOrdering {
+  id_asc
+  id_desc
+  code_asc
+  code_desc
+  amount_asc
+  amount_desc
+  type_asc
+  type_desc
+  startTime_asc
+  startTime_desc
+  endTime_asc
+  endTime_desc
+  _id_asc
+  _id_desc
+}
+
+input _FlashSaleFilter {
+  AND: [_FlashSaleFilter!]
+  OR: [_FlashSaleFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  startTime: String
+  startTime_not: String
+  startTime_in: [String!]
+  startTime_not_in: [String!]
+  startTime_contains: String
+  startTime_not_contains: String
+  startTime_starts_with: String
+  startTime_not_starts_with: String
+  startTime_ends_with: String
+  startTime_not_ends_with: String
+  endTime: String
+  endTime_not: String
+  endTime_in: [String!]
+  endTime_not_in: [String!]
+  endTime_contains: String
+  endTime_not_contains: String
+  endTime_starts_with: String
+  endTime_not_starts_with: String
+  endTime_ends_with: String
+  endTime_not_ends_with: String
+  product: _ProductFilter
+  product_not: _ProductFilter
+  product_in: [_ProductFilter!]
+  product_not_in: [_ProductFilter!]
+  product_some: _ProductFilter
+  product_none: _ProductFilter
+  product_single: _ProductFilter
+  product_every: _ProductFilter
+}
+
+input _FlashSaleInput {
+  id: ID!
+}
+
+enum _FlashSaleOrdering {
+  id_asc
+  id_desc
+  title_asc
+  title_desc
+  description_asc
+  description_desc
+  startTime_asc
+  startTime_desc
+  endTime_asc
+  endTime_desc
+  _id_asc
+  _id_desc
+}
+
+input _ImageFilter {
+  AND: [_ImageFilter!]
+  OR: [_ImageFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  filename: String
+  filename_not: String
+  filename_in: [String!]
+  filename_not_in: [String!]
+  filename_contains: String
+  filename_not_contains: String
+  filename_starts_with: String
+  filename_not_starts_with: String
+  filename_ends_with: String
+  filename_not_ends_with: String
+  mimetype: String
+  mimetype_not: String
+  mimetype_in: [String!]
+  mimetype_not_in: [String!]
+  mimetype_contains: String
+  mimetype_not_contains: String
+  mimetype_starts_with: String
+  mimetype_not_starts_with: String
+  mimetype_ends_with: String
+  mimetype_not_ends_with: String
+  encoding: String
+  encoding_not: String
+  encoding_in: [String!]
+  encoding_not_in: [String!]
+  encoding_contains: String
+  encoding_not_contains: String
+  encoding_starts_with: String
+  encoding_not_starts_with: String
+  encoding_ends_with: String
+  encoding_not_ends_with: String
+  filePath: String
+  filePath_not: String
+  filePath_in: [String!]
+  filePath_not_in: [String!]
+  filePath_contains: String
+  filePath_not_contains: String
+  filePath_starts_with: String
+  filePath_not_starts_with: String
+  filePath_ends_with: String
+  filePath_not_ends_with: String
+  createdDate: String
+  createdDate_not: String
+  createdDate_in: [String!]
+  createdDate_not_in: [String!]
+  createdDate_contains: String
+  createdDate_not_contains: String
+  createdDate_starts_with: String
+  createdDate_not_starts_with: String
+  createdDate_ends_with: String
+  createdDate_not_ends_with: String
+}
+
+input _ImageInput {
+  id: ID!
+}
+
+enum _ImageOrdering {
+  id_asc
+  id_desc
+  filename_asc
+  filename_desc
+  mimetype_asc
+  mimetype_desc
+  encoding_asc
+  encoding_desc
+  filePath_asc
+  filePath_desc
+  createdDate_asc
+  createdDate_desc
+  _id_asc
+  _id_desc
+}
+
+input _JSONTranslationFilter {
+  AND: [_JSONTranslationFilter!]
+  OR: [_JSONTranslationFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  language: Language
+  language_not: Language
+  language_in: [Language!]
+  language_not_in: [Language!]
+}
+
+input _JSONTranslationInput {
+  id: ID!
+}
+
+enum _JSONTranslationOrdering {
+  id_asc
+  id_desc
+  language_asc
+  language_desc
+  _id_asc
+  _id_desc
+}
+
+input _MembershipFilter {
+  AND: [_MembershipFilter!]
+  OR: [_MembershipFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  discount: String
+  discount_not: String
+  discount_in: [String!]
+  discount_not_in: [String!]
+  discount_contains: String
+  discount_not_contains: String
+  discount_starts_with: String
+  discount_not_starts_with: String
+  discount_ends_with: String
+  discount_not_ends_with: String
+  relatedUser: _UserFilter
+  relatedUser_not: _UserFilter
+  relatedUser_in: [_UserFilter!]
+  relatedUser_not_in: [_UserFilter!]
+}
+
+input _MembershipInput {
+  id: ID!
+}
+
+enum _MembershipOrdering {
+  id_asc
+  id_desc
+  name_asc
+  name_desc
+  discount_asc
+  discount_desc
+  _id_asc
+  _id_desc
+}
+
+type _Neo4jDate {
+  year: Int
+  month: Int
+  day: Int
+  formatted: String
+}
+
+input _Neo4jDateInput {
+  year: Int
+  month: Int
+  day: Int
+  formatted: String
+}
+
+type _Neo4jDateTime {
+  year: Int
+  month: Int
+  day: Int
+  hour: Int
+  minute: Int
+  second: Int
+  millisecond: Int
+  microsecond: Int
+  nanosecond: Int
+  timezone: String
+  formatted: String
+}
+
+input _Neo4jDateTimeInput {
+  year: Int
+  month: Int
+  day: Int
+  hour: Int
+  minute: Int
+  second: Int
+  millisecond: Int
+  microsecond: Int
+  nanosecond: Int
+  timezone: String
+  formatted: String
+}
+
+type _Neo4jLocalDateTime {
+  year: Int
+  month: Int
+  day: Int
+  hour: Int
+  minute: Int
+  second: Int
+  millisecond: Int
+  microsecond: Int
+  nanosecond: Int
+  formatted: String
+}
+
+input _Neo4jLocalDateTimeInput {
+  year: Int
+  month: Int
+  day: Int
+  hour: Int
+  minute: Int
+  second: Int
+  millisecond: Int
+  microsecond: Int
+  nanosecond: Int
+  formatted: String
+}
+
+type _Neo4jLocalTime {
+  hour: Int
+  minute: Int
+  second: Int
+  millisecond: Int
+  microsecond: Int
+  nanosecond: Int
+  formatted: String
+}
+
+input _Neo4jLocalTimeInput {
+  hour: Int
+  minute: Int
+  second: Int
+  millisecond: Int
+  microsecond: Int
+  nanosecond: Int
+  formatted: String
+}
+
+type _Neo4jTime {
+  hour: Int
+  minute: Int
+  second: Int
+  millisecond: Int
+  microsecond: Int
+  nanosecond: Int
+  timezone: String
+  formatted: String
+}
+
+input _Neo4jTimeInput {
+  hour: Int
+  minute: Int
+  second: Int
+  nanosecond: Int
+  millisecond: Int
+  microsecond: Int
+  timezone: String
+  formatted: String
+}
+
+input _OrderFilter {
+  AND: [_OrderFilter!]
+  OR: [_OrderFilter!]
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+}
+
+input _OrderInput {
+  name: String!
+}
+
+enum _OrderOrdering {
+  name_asc
+  name_desc
+  _id_asc
+  _id_desc
+}
+
+input _PageFilter {
+  AND: [_PageFilter!]
+  OR: [_PageFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  seoTitle: String
+  seoTitle_not: String
+  seoTitle_in: [String!]
+  seoTitle_not_in: [String!]
+  seoTitle_contains: String
+  seoTitle_not_contains: String
+  seoTitle_starts_with: String
+  seoTitle_not_starts_with: String
+  seoTitle_ends_with: String
+  seoTitle_not_ends_with: String
+  translatedSeoTitle: _StringTranslationFilter
+  translatedSeoTitle_not: _StringTranslationFilter
+  translatedSeoTitle_in: [_StringTranslationFilter!]
+  translatedSeoTitle_not_in: [_StringTranslationFilter!]
+  seoDescription: String
+  seoDescription_not: String
+  seoDescription_in: [String!]
+  seoDescription_not_in: [String!]
+  seoDescription_contains: String
+  seoDescription_not_contains: String
+  seoDescription_starts_with: String
+  seoDescription_not_starts_with: String
+  seoDescription_ends_with: String
+  seoDescription_not_ends_with: String
+  translatedSeoDescription: _StringTranslationFilter
+  translatedSeoDescription_not: _StringTranslationFilter
+  translatedSeoDescription_in: [_StringTranslationFilter!]
+  translatedSeoDescription_not_in: [_StringTranslationFilter!]
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
+  translatedContent: _JSONTranslationFilter
+  translatedContent_not: _JSONTranslationFilter
+  translatedContent_in: [_JSONTranslationFilter!]
+  translatedContent_not_in: [_JSONTranslationFilter!]
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  createdDate: String
+  createdDate_not: String
+  createdDate_in: [String!]
+  createdDate_not_in: [String!]
+  createdDate_contains: String
+  createdDate_not_contains: String
+  createdDate_starts_with: String
+  createdDate_not_starts_with: String
+  createdDate_ends_with: String
+  createdDate_not_ends_with: String
+  updatedDate: String
+  updatedDate_not: String
+  updatedDate_in: [String!]
+  updatedDate_not_in: [String!]
+  updatedDate_contains: String
+  updatedDate_not_contains: String
+  updatedDate_starts_with: String
+  updatedDate_not_starts_with: String
+  updatedDate_ends_with: String
+  updatedDate_not_ends_with: String
+}
+
+input _PageInput {
+  id: ID!
+}
+
+enum _PageOrdering {
+  id_asc
+  id_desc
+  name_asc
+  name_desc
+  seoTitle_asc
+  seoTitle_desc
+  seoDescription_asc
+  seoDescription_desc
+  content_asc
+  content_desc
+  url_asc
+  url_desc
+  createdDate_asc
+  createdDate_desc
+  updatedDate_asc
+  updatedDate_desc
+  _id_asc
+  _id_desc
+}
+
+input _ProductFilter {
+  AND: [_ProductFilter!]
+  OR: [_ProductFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  sku: String
+  sku_not: String
+  sku_in: [String!]
+  sku_not_in: [String!]
+  sku_contains: String
+  sku_not_contains: String
+  sku_starts_with: String
+  sku_not_starts_with: String
+  sku_ends_with: String
+  sku_not_ends_with: String
+  active: Boolean
+  active_not: Boolean
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  nameCH: String
+  nameCH_not: String
+  nameCH_in: [String!]
+  nameCH_not_in: [String!]
+  nameCH_contains: String
+  nameCH_not_contains: String
+  nameCH_starts_with: String
+  nameCH_not_starts_with: String
+  nameCH_ends_with: String
+  nameCH_not_ends_with: String
+  nameZH: String
+  nameZH_not: String
+  nameZH_in: [String!]
+  nameZH_not_in: [String!]
+  nameZH_contains: String
+  nameZH_not_contains: String
+  nameZH_starts_with: String
+  nameZH_not_starts_with: String
+  nameZH_ends_with: String
+  nameZH_not_ends_with: String
+  price: Int
+  price_not: Int
+  price_in: [Int!]
+  price_not_in: [Int!]
+  price_lt: Int
+  price_lte: Int
+  price_gt: Int
+  price_gte: Int
+  salePrice: Int
+  salePrice_not: Int
+  salePrice_in: [Int!]
+  salePrice_not_in: [Int!]
+  salePrice_lt: Int
+  salePrice_lte: Int
+  salePrice_gt: Int
+  salePrice_gte: Int
+  salePriceStart: String
+  salePriceStart_not: String
+  salePriceStart_in: [String!]
+  salePriceStart_not_in: [String!]
+  salePriceStart_contains: String
+  salePriceStart_not_contains: String
+  salePriceStart_starts_with: String
+  salePriceStart_not_starts_with: String
+  salePriceStart_ends_with: String
+  salePriceStart_not_ends_with: String
+  salePriceEnd: String
+  salePriceEnd_not: String
+  salePriceEnd_in: [String!]
+  salePriceEnd_not_in: [String!]
+  salePriceEnd_contains: String
+  salePriceEnd_not_contains: String
+  salePriceEnd_starts_with: String
+  salePriceEnd_not_starts_with: String
+  salePriceEnd_ends_with: String
+  salePriceEnd_not_ends_with: String
+  createdDate: String
+  createdDate_not: String
+  createdDate_in: [String!]
+  createdDate_not_in: [String!]
+  createdDate_contains: String
+  createdDate_not_contains: String
+  createdDate_starts_with: String
+  createdDate_not_starts_with: String
+  createdDate_ends_with: String
+  createdDate_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  shortDescription: String
+  shortDescription_not: String
+  shortDescription_in: [String!]
+  shortDescription_not_in: [String!]
+  shortDescription_contains: String
+  shortDescription_not_contains: String
+  shortDescription_starts_with: String
+  shortDescription_not_starts_with: String
+  shortDescription_ends_with: String
+  shortDescription_not_ends_with: String
+  descriptionCH: String
+  descriptionCH_not: String
+  descriptionCH_in: [String!]
+  descriptionCH_not_in: [String!]
+  descriptionCH_contains: String
+  descriptionCH_not_contains: String
+  descriptionCH_starts_with: String
+  descriptionCH_not_starts_with: String
+  descriptionCH_ends_with: String
+  descriptionCH_not_ends_with: String
+  shortDescriptionCH: String
+  shortDescriptionCH_not: String
+  shortDescriptionCH_in: [String!]
+  shortDescriptionCH_not_in: [String!]
+  shortDescriptionCH_contains: String
+  shortDescriptionCH_not_contains: String
+  shortDescriptionCH_starts_with: String
+  shortDescriptionCH_not_starts_with: String
+  shortDescriptionCH_ends_with: String
+  shortDescriptionCH_not_ends_with: String
+  descriptionZH: String
+  descriptionZH_not: String
+  descriptionZH_in: [String!]
+  descriptionZH_not_in: [String!]
+  descriptionZH_contains: String
+  descriptionZH_not_contains: String
+  descriptionZH_starts_with: String
+  descriptionZH_not_starts_with: String
+  descriptionZH_ends_with: String
+  descriptionZH_not_ends_with: String
+  shortDescriptionZH: String
+  shortDescriptionZH_not: String
+  shortDescriptionZH_in: [String!]
+  shortDescriptionZH_not_in: [String!]
+  shortDescriptionZH_contains: String
+  shortDescriptionZH_not_contains: String
+  shortDescriptionZH_starts_with: String
+  shortDescriptionZH_not_starts_with: String
+  shortDescriptionZH_ends_with: String
+  shortDescriptionZH_not_ends_with: String
+  isSubProduct: Boolean
+  isSubProduct_not: Boolean
+  length: Int
+  length_not: Int
+  length_in: [Int!]
+  length_not_in: [Int!]
+  length_lt: Int
+  length_lte: Int
+  length_gt: Int
+  length_gte: Int
+  width: Int
+  width_not: Int
+  width_in: [Int!]
+  width_not_in: [Int!]
+  width_lt: Int
+  width_lte: Int
+  width_gt: Int
+  width_gte: Int
+  height: Int
+  height_not: Int
+  height_in: [Int!]
+  height_not_in: [Int!]
+  height_lt: Int
+  height_lte: Int
+  height_gt: Int
+  height_gte: Int
+  weight: Int
+  weight_not: Int
+  weight_in: [Int!]
+  weight_not_in: [Int!]
+  weight_lt: Int
+  weight_lte: Int
+  weight_gt: Int
+  weight_gte: Int
+  stock: _StockInBranchFilter
+  stock_not: _StockInBranchFilter
+  stock_in: [_StockInBranchFilter!]
+  stock_not_in: [_StockInBranchFilter!]
+  stock_some: _StockInBranchFilter
+  stock_none: _StockInBranchFilter
+  stock_single: _StockInBranchFilter
+  stock_every: _StockInBranchFilter
+  attribute: _AttributeValueFilter
+  attribute_not: _AttributeValueFilter
+  attribute_in: [_AttributeValueFilter!]
+  attribute_not_in: [_AttributeValueFilter!]
+  attribute_some: _AttributeValueFilter
+  attribute_none: _AttributeValueFilter
+  attribute_single: _AttributeValueFilter
+  attribute_every: _AttributeValueFilter
+  primaryCategory: _CategoriesFilter
+  primaryCategory_not: _CategoriesFilter
+  primaryCategory_in: [_CategoriesFilter!]
+  primaryCategory_not_in: [_CategoriesFilter!]
+  categories: _CategoriesFilter
+  categories_not: _CategoriesFilter
+  categories_in: [_CategoriesFilter!]
+  categories_not_in: [_CategoriesFilter!]
+  categories_some: _CategoriesFilter
+  categories_none: _CategoriesFilter
+  categories_single: _CategoriesFilter
+  categories_every: _CategoriesFilter
+  images: _ImageFilter
+  images_not: _ImageFilter
+  images_in: [_ImageFilter!]
+  images_not_in: [_ImageFilter!]
+  images_some: _ImageFilter
+  images_none: _ImageFilter
+  images_single: _ImageFilter
+  images_every: _ImageFilter
+  branch: _BranchFilter
+  branch_not: _BranchFilter
+  branch_in: [_BranchFilter!]
+  branch_not_in: [_BranchFilter!]
+  variations: _ProductFilter
+  variations_not: _ProductFilter
+  variations_in: [_ProductFilter!]
+  variations_not_in: [_ProductFilter!]
+  variations_some: _ProductFilter
+  variations_none: _ProductFilter
+  variations_single: _ProductFilter
+  variations_every: _ProductFilter
+}
+
+input _ProductInput {
+  id: ID!
+}
+
+enum _ProductOrdering {
+  id_asc
+  id_desc
+  sku_asc
+  sku_desc
+  active_asc
+  active_desc
+  name_asc
+  name_desc
+  nameCH_asc
+  nameCH_desc
+  nameZH_asc
+  nameZH_desc
+  price_asc
+  price_desc
+  salePrice_asc
+  salePrice_desc
+  salePriceStart_asc
+  salePriceStart_desc
+  salePriceEnd_asc
+  salePriceEnd_desc
+  createdDate_asc
+  createdDate_desc
+  description_asc
+  description_desc
+  shortDescription_asc
+  shortDescription_desc
+  descriptionCH_asc
+  descriptionCH_desc
+  shortDescriptionCH_asc
+  shortDescriptionCH_desc
+  descriptionZH_asc
+  descriptionZH_desc
+  shortDescriptionZH_asc
+  shortDescriptionZH_desc
+  isSubProduct_asc
+  isSubProduct_desc
+  length_asc
+  length_desc
+  width_asc
+  width_desc
+  height_asc
+  height_desc
+  weight_asc
+  weight_desc
+  _id_asc
+  _id_desc
+}
+
+enum _RelationDirections {
+  IN
+  OUT
+}
+
+type _RemoveAddressRelatedUserPayload {
+  from: User
+  to: Address
+}
+
+type _RemoveAdminAdminGroupPayload {
+  from: AdminGroup
+  to: Admin
+}
+
+type _RemoveAdminGroupAdminsPayload {
+  from: AdminGroup
+  to: Admin
+}
+
+type _RemoveAttributeImagePayload {
+  from: Attribute
+  to: Image
+}
+
+type _RemoveAttributeProductPayload {
+  from: Product
+  to: Attribute
+}
+
+type _RemoveAttributeValueProductPayload {
+  from: Product
+  to: AttributeValue
+}
+
+type _RemoveAttributeValuesPayload {
+  from: Attribute
+  to: AttributeValue
+}
+
+type _RemoveAttributeValueTypePayload {
+  from: Attribute
+  to: AttributeValue
+}
+
+type _RemoveBranchProductPayload {
+  from: Product
+  to: Branch
+}
+
+type _RemoveBranchStockinbranchPayload {
+  from: StockInBranch
+  to: Branch
+}
+
+type _RemoveCategoriesChildrenPayload {
+  from: Categories
+  to: Categories
+}
+
+type _RemoveCategoriesParentPayload {
+  from: Categories
+  to: Categories
+}
+
+type _RemoveCategoriesPrimaryCategoryOfProductPayload {
+  from: Product
+  to: Categories
+}
+
+type _RemoveCategoriesProductPayload {
+  from: Product
+  to: Categories
+}
+
+type _RemoveCouponProductPayload {
+  from: Coupon
+  to: Product
+}
+
+type _RemoveFlashSaleProductPayload {
+  from: FlashSale
+  to: Product
+}
+
+type _RemoveMembershipRelatedUserPayload {
+  from: User
+  to: Membership
+}
+
+type _RemovePageTranslatedContentPayload {
+  from: Page
+  to: JSONTranslation
+}
+
+type _RemovePageTranslatedSeoDescriptionPayload {
+  from: Page
+  to: StringTranslation
+}
+
+type _RemovePageTranslatedSeoTitlePayload {
+  from: Page
+  to: StringTranslation
+}
+
+type _RemoveProductAttributePayload {
+  from: Product
+  to: AttributeValue
+}
+
+type _RemoveProductBranchPayload {
+  from: Product
+  to: Branch
+}
+
+type _RemoveProductCategoriesPayload {
+  from: Product
+  to: Categories
+}
+
+type _RemoveProductImagesPayload {
+  from: Image
+  to: Product
+}
+
+type _RemoveProductPrimaryCategoryPayload {
+  from: Product
+  to: Categories
+}
+
+type _RemoveProductStockPayload {
+  from: Product
+  to: StockInBranch
+}
+
+type _RemoveProductVariationsPayload {
+  from: Product
+  to: Product
+}
+
+type _RemoveStockInBranchBranchPayload {
+  from: StockInBranch
+  to: Branch
+}
+
+type _RemoveStockInBranchProductPayload {
+  from: Product
+  to: StockInBranch
+}
+
+type _RemoveUserAddressesPayload {
+  from: User
+  to: Address
+}
+
+type _RemoveUserBranchPayload {
+  from: User
+  to: Branch
+}
+
+type _RemoveUserMembershipPayload {
+  from: User
+  to: Membership
+}
+
+type _RemoveUserWishlistPayload {
+  from: User
+  to: Product
+}
+
+input _StatusFilter {
+  AND: [_StatusFilter!]
+  OR: [_StatusFilter!]
+  isFirstTimeSetup: Boolean
+  isFirstTimeSetup_not: Boolean
+}
+
+input _StatusInput {
+  isFirstTimeSetup: Boolean!
+}
+
+enum _StatusOrdering {
+  isFirstTimeSetup_asc
+  isFirstTimeSetup_desc
+  _id_asc
+  _id_desc
+}
+
+input _StockInBranchFilter {
+  AND: [_StockInBranchFilter!]
+  OR: [_StockInBranchFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  value: Int
+  value_not: Int
+  value_in: [Int!]
+  value_not_in: [Int!]
+  value_lt: Int
+  value_lte: Int
+  value_gt: Int
+  value_gte: Int
+  branch: _BranchFilter
+  branch_not: _BranchFilter
+  branch_in: [_BranchFilter!]
+  branch_not_in: [_BranchFilter!]
+  product: _ProductFilter
+  product_not: _ProductFilter
+  product_in: [_ProductFilter!]
+  product_not_in: [_ProductFilter!]
+}
+
+input _StockInBranchInput {
+  id: ID!
+}
+
+enum _StockInBranchOrdering {
+  id_asc
+  id_desc
+  value_asc
+  value_desc
+  _id_asc
+  _id_desc
+}
+
+input _StringTranslationFilter {
+  AND: [_StringTranslationFilter!]
+  OR: [_StringTranslationFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  language: Language
+  language_not: Language
+  language_in: [Language!]
+  language_not_in: [Language!]
+  value: String
+  value_not: String
+  value_in: [String!]
+  value_not_in: [String!]
+  value_contains: String
+  value_not_contains: String
+  value_starts_with: String
+  value_not_starts_with: String
+  value_ends_with: String
+  value_not_ends_with: String
+}
+
+input _StringTranslationInput {
+  id: ID!
+}
+
+enum _StringTranslationOrdering {
+  id_asc
+  id_desc
+  language_asc
+  language_desc
+  value_asc
+  value_desc
+  _id_asc
+  _id_desc
+}
+
+input _UserFilter {
+  AND: [_UserFilter!]
+  OR: [_UserFilter!]
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  firstName: String
+  firstName_not: String
+  firstName_in: [String!]
+  firstName_not_in: [String!]
+  firstName_contains: String
+  firstName_not_contains: String
+  firstName_starts_with: String
+  firstName_not_starts_with: String
+  firstName_ends_with: String
+  firstName_not_ends_with: String
+  lastName: String
+  lastName_not: String
+  lastName_in: [String!]
+  lastName_not_in: [String!]
+  lastName_contains: String
+  lastName_not_contains: String
+  lastName_starts_with: String
+  lastName_not_starts_with: String
+  lastName_ends_with: String
+  lastName_not_ends_with: String
+  company: String
+  company_not: String
+  company_in: [String!]
+  company_not_in: [String!]
+  company_contains: String
+  company_not_contains: String
+  company_starts_with: String
+  company_not_starts_with: String
+  company_ends_with: String
+  company_not_ends_with: String
+  zipCode: String
+  zipCode_not: String
+  zipCode_in: [String!]
+  zipCode_not_in: [String!]
+  zipCode_contains: String
+  zipCode_not_contains: String
+  zipCode_starts_with: String
+  zipCode_not_starts_with: String
+  zipCode_ends_with: String
+  zipCode_not_ends_with: String
+  phoneNumber: String
+  phoneNumber_not: String
+  phoneNumber_in: [String!]
+  phoneNumber_not_in: [String!]
+  phoneNumber_contains: String
+  phoneNumber_not_contains: String
+  phoneNumber_starts_with: String
+  phoneNumber_not_starts_with: String
+  phoneNumber_ends_with: String
+  phoneNumber_not_ends_with: String
+  language: String
+  language_not: String
+  language_in: [String!]
+  language_not_in: [String!]
+  language_contains: String
+  language_not_contains: String
+  language_starts_with: String
+  language_not_starts_with: String
+  language_ends_with: String
+  language_not_ends_with: String
+  signUp: Boolean
+  signUp_not: Boolean
+  isSubscibeToNews: Boolean
+  isSubscibeToNews_not: Boolean
+  addresses: _AddressFilter
+  addresses_not: _AddressFilter
+  addresses_in: [_AddressFilter!]
+  addresses_not_in: [_AddressFilter!]
+  addresses_some: _AddressFilter
+  addresses_none: _AddressFilter
+  addresses_single: _AddressFilter
+  addresses_every: _AddressFilter
+  wishlist: _ProductFilter
+  wishlist_not: _ProductFilter
+  wishlist_in: [_ProductFilter!]
+  wishlist_not_in: [_ProductFilter!]
+  wishlist_some: _ProductFilter
+  wishlist_none: _ProductFilter
+  wishlist_single: _ProductFilter
+  wishlist_every: _ProductFilter
+  membership: _MembershipFilter
+  membership_not: _MembershipFilter
+  membership_in: [_MembershipFilter!]
+  membership_not_in: [_MembershipFilter!]
+  branch: _BranchFilter
+  branch_not: _BranchFilter
+  branch_in: [_BranchFilter!]
+  branch_not_in: [_BranchFilter!]
+  branch_some: _BranchFilter
+  branch_none: _BranchFilter
+  branch_single: _BranchFilter
+  branch_every: _BranchFilter
+}
+
+input _UserInput {
+  id: ID!
+}
+
+enum _UserOrdering {
+  id_asc
+  id_desc
+  email_asc
+  email_desc
+  firstName_asc
+  firstName_desc
+  lastName_asc
+  lastName_desc
+  company_asc
+  company_desc
+  zipCode_asc
+  zipCode_desc
+  phoneNumber_asc
+  phoneNumber_desc
+  language_asc
+  language_desc
+  signUp_asc
+  signUp_desc
+  isSubscibeToNews_asc
+  isSubscibeToNews_desc
+  _id_asc
+  _id_desc
+}
+
+type Address {
+  id: ID!
+  state: String
+  subDistrict: String
+  district: String
+  city: String
+  street: String
+  isBillingAddress: Boolean
+  isShippingAddress: Boolean
+  relatedUser(filter: _UserFilter): User
+  _id: String
+}
+
+type Admin {
+  _id: String
+  username: String!
+  adminGroup(filter: _AdminGroupFilter): AdminGroup
+  email: String
+  firstName: String
+  lastName: String
+  address: String
+}
+
+type AdminGroup {
+  id: ID!
+  name: String!
+  permissions: JSON!
+  admins(first: Int, offset: Int, orderBy: [_AdminOrdering], filter: _AdminFilter): [Admin]
+  _id: String
+}
+
+type AdminLoginResponse {
+  token: String!
+  user: Admin
+  refreshToken: String!
+}
+
+type Attribute {
+  id: ID!
+  name: String
+  image(filter: _ImageFilter): Image
+  values(first: Int, offset: Int, orderBy: [_AttributeValueOrdering], filter: _AttributeValueFilter): [AttributeValue]
+  product(filter: _ProductFilter): Product
+  _id: String
+}
+
+type AttributeValue {
+  id: ID!
+  value: String!
+  type(filter: _AttributeFilter): Attribute
+  product(first: Int, offset: Int, orderBy: [_ProductOrdering], filter: _ProductFilter): [Product]
+  _id: String
+}
+
+type Branch {
+  id: ID!
+  name: String
+  description: String
+  address: String
+  showInWebsite: Boolean
+  stockinbranch(first: Int, offset: Int, orderBy: [_StockInBranchOrdering], filter: _StockInBranchFilter): [StockInBranch]
+  product(first: Int, offset: Int, orderBy: [_ProductOrdering], filter: _ProductFilter): [Product]
+  _id: String
+}
+
+type Categories {
+  id: ID!
+  name: String
+  product(first: Int, offset: Int, orderBy: [_ProductOrdering], filter: _ProductFilter): [Product]
+  primaryCategoryOfProduct(first: Int, offset: Int, orderBy: [_ProductOrdering], filter: _ProductFilter): [Product]
+  parent(filter: _CategoriesFilter): Categories
+  children(first: Int, offset: Int, orderBy: [_CategoriesOrdering], filter: _CategoriesFilter): [Categories]
+  _id: String
+}
+
+type Coupon {
+  id: ID!
+  code: String!
+  amount: String
+  type: String
+  startTime: String
+  endTime: String
+  product(first: Int, offset: Int, orderBy: [_ProductOrdering], filter: _ProductFilter): [Product]
+  _id: String
+}
+
+type FlashSale {
+  id: ID!
+  title: String
+  description: String
+  startTime: String
+  endTime: String
+  product(first: Int, offset: Int, orderBy: [_ProductOrdering], filter: _ProductFilter): [Product]
+  _id: String
+}
+
+type Image {
+  id: ID
+  filename: String
+  mimetype: String
+  encoding: String
+  filePath: String
+  createdDate: String
+  _id: String
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
+
+type JSONTranslation {
+  id: ID
+  language: Language
+  value: JSONObject
+  _id: String
+}
+
+enum Language {
+  en
+  zh
+}
+
+type LoginResponse {
+  token: String!
+  user: User
+  refreshToken: String!
+}
+
+type Membership {
+  id: ID!
+  name: String
+  discount: String
+  relatedUser(filter: _UserFilter): User
+  _id: String
+}
+
+type Mutation {
+  Testing: String
+  CreateImage(file: [Upload!]): [Image]
+  ProductImport(file: Upload!): [Product]
+  DeleteProduct(id: [ID!]): [Product]
+  SendMessage(to: String, body: String): JSONObject
+  SendWhatsappMessage(to: String, body: String): JSONObject
+  LoginAdmin(username: String!, password: String!): AdminLoginResponse
+  CreateAdmin(username: String!, password: String!, email: String): Admin
+  FirstTimeSetup(username: String!, password: String!, email: String, token: String!): Admin
+  LoginUser(email: String!, password: String!): LoginResponse
+  CreateUser(id: ID, email: String!, password: String!): User
+  MakePaypalPayment: JSON
+  CreateStripePayment(amount: Int!, currency: String!, paymentMethodTypes: JSON!, statementDescriptor: String!): JSON
+  UpdateStripePayment(id: String!, amount: Int!): JSON
+  CreatePage(id: ID, name: String, seoTitle: String, seoDescription: String, content: String, url: String, createdDate: String, updatedDate: String): Page
+  UpdatePage(id: ID!, name: String, seoTitle: String, seoDescription: String, content: String, url: String, createdDate: String, updatedDate: String): Page
+  DeletePage(id: ID!): Page
+  AddPageTranslatedSeoTitle(from: _PageInput!, to: _StringTranslationInput!): _AddPageTranslatedSeoTitlePayload
+  RemovePageTranslatedSeoTitle(from: _PageInput!, to: _StringTranslationInput!): _RemovePageTranslatedSeoTitlePayload
+  AddPageTranslatedSeoDescription(from: _PageInput!, to: _StringTranslationInput!): _AddPageTranslatedSeoDescriptionPayload
+  RemovePageTranslatedSeoDescription(from: _PageInput!, to: _StringTranslationInput!): _RemovePageTranslatedSeoDescriptionPayload
+  AddPageTranslatedContent(from: _PageInput!, to: _JSONTranslationInput!): _AddPageTranslatedContentPayload
+  RemovePageTranslatedContent(from: _PageInput!, to: _JSONTranslationInput!): _RemovePageTranslatedContentPayload
+  CreateStatus(isFirstTimeSetup: Boolean!): Status
+  DeleteStatus(isFirstTimeSetup: Boolean!): Status
+  CreateStringTranslation(id: ID, language: Language, value: String): StringTranslation
+  UpdateStringTranslation(id: ID!, language: Language, value: String): StringTranslation
+  DeleteStringTranslation(id: ID!): StringTranslation
+  CreateJSONTranslation(id: ID, language: Language, value: JSONObject): JSONTranslation
+  UpdateJSONTranslation(id: ID!, language: Language, value: JSONObject): JSONTranslation
+  DeleteJSONTranslation(id: ID!): JSONTranslation
+  UpdateImage(id: ID!, filename: String, mimetype: String, encoding: String, filePath: String, createdDate: String): Image
+  DeleteImage(id: ID!): Image
+  CreateProduct(id: ID, sku: String, active: Boolean, name: String, nameCH: String, nameZH: String, price: Int, salePrice: Int, salePriceStart: String, salePriceEnd: String, createdDate: String, description: String, shortDescription: String, descriptionCH: String, shortDescriptionCH: String, descriptionZH: String, shortDescriptionZH: String, isSubProduct: Boolean, length: Int, width: Int, height: Int, weight: Int): Product
+  UpdateProduct(id: ID!, sku: String, active: Boolean, name: String, nameCH: String, nameZH: String, price: Int, salePrice: Int, salePriceStart: String, salePriceEnd: String, createdDate: String, description: String, shortDescription: String, descriptionCH: String, shortDescriptionCH: String, descriptionZH: String, shortDescriptionZH: String, isSubProduct: Boolean, length: Int, width: Int, height: Int, weight: Int): Product
+  AddProductStock(from: _ProductInput!, to: _StockInBranchInput!): _AddProductStockPayload
+  RemoveProductStock(from: _ProductInput!, to: _StockInBranchInput!): _RemoveProductStockPayload
+  AddProductAttribute(from: _ProductInput!, to: _AttributeValueInput!): _AddProductAttributePayload
+  RemoveProductAttribute(from: _ProductInput!, to: _AttributeValueInput!): _RemoveProductAttributePayload
+  AddProductPrimaryCategory(from: _ProductInput!, to: _CategoriesInput!): _AddProductPrimaryCategoryPayload
+  RemoveProductPrimaryCategory(from: _ProductInput!, to: _CategoriesInput!): _RemoveProductPrimaryCategoryPayload
+  AddProductCategories(from: _ProductInput!, to: _CategoriesInput!): _AddProductCategoriesPayload
+  RemoveProductCategories(from: _ProductInput!, to: _CategoriesInput!): _RemoveProductCategoriesPayload
+  AddProductImages(from: _ImageInput!, to: _ProductInput!): _AddProductImagesPayload
+  RemoveProductImages(from: _ImageInput!, to: _ProductInput!): _RemoveProductImagesPayload
+  AddProductBranch(from: _ProductInput!, to: _BranchInput!): _AddProductBranchPayload
+  RemoveProductBranch(from: _ProductInput!, to: _BranchInput!): _RemoveProductBranchPayload
+  AddProductVariations(from: _ProductInput!, to: _ProductInput!): _AddProductVariationsPayload
+  RemoveProductVariations(from: _ProductInput!, to: _ProductInput!): _RemoveProductVariationsPayload
+  CreateStockInBranch(id: ID, value: Int): StockInBranch
+  UpdateStockInBranch(id: ID!, value: Int): StockInBranch
+  DeleteStockInBranch(id: ID!): StockInBranch
+  AddStockInBranchBranch(from: _StockInBranchInput!, to: _BranchInput!): _AddStockInBranchBranchPayload
+  RemoveStockInBranchBranch(from: _StockInBranchInput!, to: _BranchInput!): _RemoveStockInBranchBranchPayload
+  AddStockInBranchProduct(from: _ProductInput!, to: _StockInBranchInput!): _AddStockInBranchProductPayload
+  RemoveStockInBranchProduct(from: _ProductInput!, to: _StockInBranchInput!): _RemoveStockInBranchProductPayload
+  CreateBranch(id: ID, name: String, description: String, address: String, showInWebsite: Boolean): Branch
+  UpdateBranch(id: ID!, name: String, description: String, address: String, showInWebsite: Boolean): Branch
+  DeleteBranch(id: ID!): Branch
+  AddBranchStockinbranch(from: _StockInBranchInput!, to: _BranchInput!): _AddBranchStockinbranchPayload
+  RemoveBranchStockinbranch(from: _StockInBranchInput!, to: _BranchInput!): _RemoveBranchStockinbranchPayload
+  AddBranchProduct(from: _ProductInput!, to: _BranchInput!): _AddBranchProductPayload
+  RemoveBranchProduct(from: _ProductInput!, to: _BranchInput!): _RemoveBranchProductPayload
+  CreateCategories(id: ID, name: String): Categories
+  UpdateCategories(id: ID!, name: String): Categories
+  DeleteCategories(id: ID!): Categories
+  AddCategoriesProduct(from: _ProductInput!, to: _CategoriesInput!): _AddCategoriesProductPayload
+  RemoveCategoriesProduct(from: _ProductInput!, to: _CategoriesInput!): _RemoveCategoriesProductPayload
+  AddCategoriesPrimaryCategoryOfProduct(from: _ProductInput!, to: _CategoriesInput!): _AddCategoriesPrimaryCategoryOfProductPayload
+  RemoveCategoriesPrimaryCategoryOfProduct(from: _ProductInput!, to: _CategoriesInput!): _RemoveCategoriesPrimaryCategoryOfProductPayload
+  AddCategoriesParent(from: _CategoriesInput!, to: _CategoriesInput!): _AddCategoriesParentPayload
+  RemoveCategoriesParent(from: _CategoriesInput!, to: _CategoriesInput!): _RemoveCategoriesParentPayload
+  AddCategoriesChildren(from: _CategoriesInput!, to: _CategoriesInput!): _AddCategoriesChildrenPayload
+  RemoveCategoriesChildren(from: _CategoriesInput!, to: _CategoriesInput!): _RemoveCategoriesChildrenPayload
+  CreateAttributeValue(id: ID, value: String!): AttributeValue
+  UpdateAttributeValue(id: ID!, value: String): AttributeValue
+  DeleteAttributeValue(id: ID!): AttributeValue
+  AddAttributeValueType(from: _AttributeInput!, to: _AttributeValueInput!): _AddAttributeValueTypePayload
+  RemoveAttributeValueType(from: _AttributeInput!, to: _AttributeValueInput!): _RemoveAttributeValueTypePayload
+  AddAttributeValueProduct(from: _ProductInput!, to: _AttributeValueInput!): _AddAttributeValueProductPayload
+  RemoveAttributeValueProduct(from: _ProductInput!, to: _AttributeValueInput!): _RemoveAttributeValueProductPayload
+  CreateAttribute(id: ID, name: String): Attribute
+  UpdateAttribute(id: ID!, name: String): Attribute
+  DeleteAttribute(id: ID!): Attribute
+  AddAttributeImage(from: _AttributeInput!, to: _ImageInput!): _AddAttributeImagePayload
+  RemoveAttributeImage(from: _AttributeInput!, to: _ImageInput!): _RemoveAttributeImagePayload
+  AddAttributeValues(from: _AttributeInput!, to: _AttributeValueInput!): _AddAttributeValuesPayload
+  RemoveAttributeValues(from: _AttributeInput!, to: _AttributeValueInput!): _RemoveAttributeValuesPayload
+  AddAttributeProduct(from: _ProductInput!, to: _AttributeInput!): _AddAttributeProductPayload
+  RemoveAttributeProduct(from: _ProductInput!, to: _AttributeInput!): _RemoveAttributeProductPayload
+  CreateCoupon(id: ID, code: String!, amount: String, type: String, startTime: String, endTime: String): Coupon
+  UpdateCoupon(id: ID!, code: String, amount: String, type: String, startTime: String, endTime: String): Coupon
+  DeleteCoupon(id: ID!): Coupon
+  AddCouponProduct(from: _CouponInput!, to: _ProductInput!): _AddCouponProductPayload
+  RemoveCouponProduct(from: _CouponInput!, to: _ProductInput!): _RemoveCouponProductPayload
+  CreateFlashSale(id: ID, title: String, description: String, startTime: String, endTime: String): FlashSale
+  UpdateFlashSale(id: ID!, title: String, description: String, startTime: String, endTime: String): FlashSale
+  DeleteFlashSale(id: ID!): FlashSale
+  AddFlashSaleProduct(from: _FlashSaleInput!, to: _ProductInput!): _AddFlashSaleProductPayload
+  RemoveFlashSaleProduct(from: _FlashSaleInput!, to: _ProductInput!): _RemoveFlashSaleProductPayload
+  UpdateAdmin(username: String!, email: String, firstName: String, lastName: String, address: String): Admin
+  DeleteAdmin(username: String!): Admin
+  AddAdminAdminGroup(from: _AdminGroupInput!, to: _AdminInput!): _AddAdminAdminGroupPayload
+  RemoveAdminAdminGroup(from: _AdminGroupInput!, to: _AdminInput!): _RemoveAdminAdminGroupPayload
+  CreateAdminGroup(id: ID, name: String!, permissions: JSON!): AdminGroup
+  UpdateAdminGroup(id: ID!, name: String, permissions: JSON): AdminGroup
+  DeleteAdminGroup(id: ID!): AdminGroup
+  AddAdminGroupAdmins(from: _AdminGroupInput!, to: _AdminInput!): _AddAdminGroupAdminsPayload
+  RemoveAdminGroupAdmins(from: _AdminGroupInput!, to: _AdminInput!): _RemoveAdminGroupAdminsPayload
+  UpdateUser(id: ID!, email: String, firstName: String, lastName: String, company: String, zipCode: String, phoneNumber: String, language: String, signUp: Boolean, isSubscibeToNews: Boolean): User
+  DeleteUser(id: ID!): User
+  AddUserAddresses(from: _UserInput!, to: _AddressInput!): _AddUserAddressesPayload
+  RemoveUserAddresses(from: _UserInput!, to: _AddressInput!): _RemoveUserAddressesPayload
+  AddUserWishlist(from: _UserInput!, to: _ProductInput!): _AddUserWishlistPayload
+  RemoveUserWishlist(from: _UserInput!, to: _ProductInput!): _RemoveUserWishlistPayload
+  AddUserMembership(from: _UserInput!, to: _MembershipInput!): _AddUserMembershipPayload
+  RemoveUserMembership(from: _UserInput!, to: _MembershipInput!): _RemoveUserMembershipPayload
+  AddUserBranch(from: _UserInput!, to: _BranchInput!): _AddUserBranchPayload
+  RemoveUserBranch(from: _UserInput!, to: _BranchInput!): _RemoveUserBranchPayload
+  CreateAddress(id: ID, state: String, subDistrict: String, district: String, city: String, street: String, isBillingAddress: Boolean, isShippingAddress: Boolean): Address
+  UpdateAddress(id: ID!, state: String, subDistrict: String, district: String, city: String, street: String, isBillingAddress: Boolean, isShippingAddress: Boolean): Address
+  DeleteAddress(id: ID!): Address
+  AddAddressRelatedUser(from: _UserInput!, to: _AddressInput!): _AddAddressRelatedUserPayload
+  RemoveAddressRelatedUser(from: _UserInput!, to: _AddressInput!): _RemoveAddressRelatedUserPayload
+  CreateMembership(id: ID, name: String, discount: String): Membership
+  UpdateMembership(id: ID!, name: String, discount: String): Membership
+  DeleteMembership(id: ID!): Membership
+  AddMembershipRelatedUser(from: _UserInput!, to: _MembershipInput!): _AddMembershipRelatedUserPayload
+  RemoveMembershipRelatedUser(from: _UserInput!, to: _MembershipInput!): _RemoveMembershipRelatedUserPayload
+  CreateOrder(name: String): Order
+  DeleteOrder(name: String!): Order
+}
+
+type Order {
+  name: String
+  _id: String
+}
+
+type Page {
+  id: ID!
+  name: String
+  seoTitle: String
+  translatedSeoTitle(filter: _StringTranslationFilter): StringTranslation
+  seoDescription: String
+  translatedSeoDescription(filter: _StringTranslationFilter): StringTranslation
+  content: String
+  translatedContent(filter: _JSONTranslationFilter): JSONTranslation
+  url: String
+  createdDate: String
+  updatedDate: String
+  _id: String
+}
+
+type Product {
+  id: ID!
+  sku: String
+  active: Boolean
+  name: String
+  nameCH: String
+  nameZH: String
+  price: Int
+  salePrice: Int
+  salePriceStart: String
+  salePriceEnd: String
+  createdDate: String
+  description: String
+  shortDescription: String
+  descriptionCH: String
+  shortDescriptionCH: String
+  descriptionZH: String
+  shortDescriptionZH: String
+  isSubProduct: Boolean
+  length: Int
+  width: Int
+  height: Int
+  weight: Int
+  stock(first: Int, offset: Int, orderBy: [_StockInBranchOrdering], filter: _StockInBranchFilter): [StockInBranch]
+  attribute(first: Int, offset: Int, orderBy: [_AttributeValueOrdering], filter: _AttributeValueFilter): [AttributeValue]
+  primaryCategory(filter: _CategoriesFilter): Categories
+  categories(first: Int, offset: Int, orderBy: [_CategoriesOrdering], filter: _CategoriesFilter): [Categories]
+  images(first: Int, offset: Int, orderBy: [_ImageOrdering], filter: _ImageFilter): [Image]
+  branch(filter: _BranchFilter): Branch
+  variations(first: Int, offset: Int, orderBy: [_ProductOrdering], filter: _ProductFilter): [Product]
+  _id: String
+}
+
+type Query {
+  CurrentStatus(filter: _StatusFilter): Status
+  ProductExport: String
+  CurrentAdmin: AdminLoginResponse
+  CurrentUser: LoginResponse
+  Page(id: ID, name: String, seoTitle: String, seoDescription: String, content: String, url: String, createdDate: String, updatedDate: String, _id: String, first: Int, offset: Int, orderBy: [_PageOrdering], filter: _PageFilter): [Page]
+  Status(isFirstTimeSetup: Boolean, _id: String, first: Int, offset: Int, orderBy: [_StatusOrdering], filter: _StatusFilter): [Status]
+  StringTranslation(id: ID, language: Language, value: String, _id: String, first: Int, offset: Int, orderBy: [_StringTranslationOrdering], filter: _StringTranslationFilter): [StringTranslation]
+  JSONTranslation(id: ID, language: Language, value: JSONObject, _id: String, first: Int, offset: Int, orderBy: [_JSONTranslationOrdering], filter: _JSONTranslationFilter): [JSONTranslation]
+  Image(id: ID, filename: String, mimetype: String, encoding: String, filePath: String, createdDate: String, _id: String, first: Int, offset: Int, orderBy: [_ImageOrdering], filter: _ImageFilter): [Image]
+  Product(id: ID, sku: String, active: Boolean, name: String, nameCH: String, nameZH: String, price: Int, salePrice: Int, salePriceStart: String, salePriceEnd: String, createdDate: String, description: String, shortDescription: String, descriptionCH: String, shortDescriptionCH: String, descriptionZH: String, shortDescriptionZH: String, isSubProduct: Boolean, length: Int, width: Int, height: Int, weight: Int, _id: String, first: Int, offset: Int, orderBy: [_ProductOrdering], filter: _ProductFilter): [Product]
+  StockInBranch(id: ID, value: Int, _id: String, first: Int, offset: Int, orderBy: [_StockInBranchOrdering], filter: _StockInBranchFilter): [StockInBranch]
+  Branch(id: ID, name: String, description: String, address: String, showInWebsite: Boolean, _id: String, first: Int, offset: Int, orderBy: [_BranchOrdering], filter: _BranchFilter): [Branch]
+  Categories(id: ID, name: String, _id: String, first: Int, offset: Int, orderBy: [_CategoriesOrdering], filter: _CategoriesFilter): [Categories]
+  AttributeValue(id: ID, value: String, _id: String, first: Int, offset: Int, orderBy: [_AttributeValueOrdering], filter: _AttributeValueFilter): [AttributeValue]
+  Attribute(id: ID, name: String, _id: String, first: Int, offset: Int, orderBy: [_AttributeOrdering], filter: _AttributeFilter): [Attribute]
+  Coupon(id: ID, code: String, amount: String, type: String, startTime: String, endTime: String, _id: String, first: Int, offset: Int, orderBy: [_CouponOrdering], filter: _CouponFilter): [Coupon]
+  FlashSale(id: ID, title: String, description: String, startTime: String, endTime: String, _id: String, first: Int, offset: Int, orderBy: [_FlashSaleOrdering], filter: _FlashSaleFilter): [FlashSale]
+  Admin(_id: String, username: String, email: String, firstName: String, lastName: String, address: String, first: Int, offset: Int, orderBy: [_AdminOrdering], filter: _AdminFilter): [Admin]
+  AdminGroup(id: ID, name: String, permissions: JSON, _id: String, first: Int, offset: Int, orderBy: [_AdminGroupOrdering], filter: _AdminGroupFilter): [AdminGroup]
+  User(id: ID, email: String, firstName: String, lastName: String, company: String, zipCode: String, phoneNumber: String, language: String, signUp: Boolean, isSubscibeToNews: Boolean, _id: String, first: Int, offset: Int, orderBy: [_UserOrdering], filter: _UserFilter): [User]
+  Address(id: ID, state: String, subDistrict: String, district: String, city: String, street: String, isBillingAddress: Boolean, isShippingAddress: Boolean, _id: String, first: Int, offset: Int, orderBy: [_AddressOrdering], filter: _AddressFilter): [Address]
+  Membership(id: ID, name: String, discount: String, _id: String, first: Int, offset: Int, orderBy: [_MembershipOrdering], filter: _MembershipFilter): [Membership]
+  Order(name: String, _id: String, first: Int, offset: Int, orderBy: [_OrderOrdering], filter: _OrderFilter): [Order]
+}
+
+type Status {
+  isFirstTimeSetup: Boolean!
+  _id: String
+}
+
+type StockInBranch {
+  id: ID!
+  value: Int
+  branch(filter: _BranchFilter): Branch
+  product(filter: _ProductFilter): Product
+  _id: String
+}
+
+type StringTranslation {
+  id: ID
+  language: Language
+  value: String
+  _id: String
+}
+
+type Subscription {
+  Page: Page
+  Product: Product
+  activeUsers: String
+}
+
+scalar Upload
+
+type User {
+  id: ID
+  email: String
+  firstName: String
+  lastName: String
+  company: String
+  zipCode: String
+  phoneNumber: String
+  language: String
+  signUp: Boolean
+  isSubscibeToNews: Boolean
+  addresses(first: Int, offset: Int, orderBy: [_AddressOrdering], filter: _AddressFilter): [Address]
+  wishlist(first: Int, offset: Int, orderBy: [_ProductOrdering], filter: _ProductFilter): [Product]
+  membership(filter: _MembershipFilter): Membership
+  branch(first: Int, offset: Int, orderBy: [_BranchOrdering], filter: _BranchFilter): [Branch]
+  _id: String
+}
